@@ -1,0 +1,13 @@
+For KSDATAFORMAT_SUBTYPE_PCM in src/ao_wmm.c
+
+--- origsrc/libao-1.1.0/configure.ac	2011-02-22 10:25:13.000000000 -0600
++++ src/libao-1.1.0/configure.ac	2013-11-19 23:20:49.921179600 -0600
+@@ -228,7 +228,7 @@ AS_IF([test "x$enable_wmm" != "xno"],
+ [AC_CHECK_HEADERS([mmsystem.h],
+    [
+    AC_MSG_CHECKING([waveOut family functions])
+-   waveout_old_LIBS="$LIBS"; LIBS="$LIBS -lwinmm"
++   waveout_old_LIBS="$LIBS"; LIBS="$LIBS -lwinmm -Wl,-lksguid"
+ dnl Can't use AC_SEARCH_LIBS because symbols are decorated
+    AC_LINK_IFELSE([
+ #include <windows.h>

@@ -1,0 +1,28 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross
+
+NAME="mingw64-x86_64-libao"
+VERSION=1.1.0
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="Xiph audio output library for Win64 toolchain"
+DESCRIPTION="Libao is a cross-platform audio library that allows programs to
+output audio using a simple API on a wide variety of platforms."
+HOMEPAGE="http://www.xiph.org/ao/"
+SRC_URI="http://downloads.xiph.org/releases/ao/libao-${VERSION}.tar.gz"
+SRC_DIR="libao-${VERSION}"
+PATCH_URI="1.1.0-mingw-w64.patch"
+
+CYGCONF_ARGS="
+	--disable-alsa
+	--disable-arts
+	--disable-esd
+	--disable-nas
+	--disable-pulse
+	--enable-wmm
+"
+
+src_install() {
+	cd ${B}
+	cyginstall doc_DATA= man_MANS=
+}
